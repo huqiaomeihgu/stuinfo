@@ -75,7 +75,7 @@ fclose(fd);
 		return -1;
 	}
 
-
+	
 	if ((ret = mysql_real_query(db, sql, strlen(sql) + 1)) != 0)
 	{
 		fprintf(cgiOut,"mysql_real_query fail:%s\n", mysql_error(db));

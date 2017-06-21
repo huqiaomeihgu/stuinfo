@@ -63,7 +63,7 @@ fclose(fd);
 
 	//fprintf(cgiOut, "name = %s, age = %s, stuId = %s\n", name, age, stuId);
 
-	int ret;
+	//int ret;
 	char sql[128] = "\0";
 	MYSQL *db;
 
@@ -86,7 +86,7 @@ fclose(fd);
 
 
 
-	/*strcpy(sql, "create table information(sno varchar(20) not null primary key, sname varchar(20) not null, sage int not null),schoolno varchar(20) not null,foreign key (schoolno) references school(schoolno)");*/
+	/*strcpy(sql, "create table information(sno varchar(20) not null primary key, sname varchar(20) not null, sage int not null),schoolno varchar(20) not null,foreign key (schoolno) references school(schoolno)");
 
 	if ((ret = mysql_real_query(db, sql, strlen(sql) + 1)) != 0)
 	{
@@ -96,11 +96,12 @@ fclose(fd);
 			mysql_close(db);
 			return -1;
 		}
-	}
+	}*/
 
 
 
 	sprintf(sql, "insert into information values('%s','%s',%d,'%s')", sno, sname, atoi(sage),schoolno);
+
 	if (mysql_real_query(db, sql, strlen(sql) + 1) != 0)
 	{
 		fprintf(cgiOut, "%s\n", mysql_error(db));
