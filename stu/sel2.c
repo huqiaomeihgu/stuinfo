@@ -48,7 +48,7 @@ fclose(fd);
 	MYSQL *db;
 	char sql[128] = "\0";
 
-	if (sname[0] == '*')
+	if (cname[0] == '*')
 	{
 		sprintf(sql, "select * from course");
 	}
