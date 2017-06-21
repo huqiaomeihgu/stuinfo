@@ -100,7 +100,7 @@ fclose(fd);
 
 
 
-	sprintf(sql, "insert into information values('%s','%s',%d,'%s')", sno, sname, atoi(sage),schoolno);
+	sprintf(sql, "insert into information(sno,sname,sage,schoolno) values('%s','%s',%d,'%s')", sno, sname, atoi(sage),schoolno);
 
 	if (mysql_real_query(db, sql, strlen(sql) + 1) != 0)
 	{

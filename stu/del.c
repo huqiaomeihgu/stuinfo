@@ -11,6 +11,7 @@ int cgiMain()
 	FILE * fd;
 
 	char sno[32] = "\0";
+	char d[20] = "\0";
 	int status = 0;
 	char ch;
 
@@ -31,6 +32,13 @@ fclose(fd);
 	if (status != cgiFormSuccess)
 	{
 		fprintf(cgiOut, "get sno error!\n");
+		return 1;
+	}
+
+	status = cgiFormString("d",  d, 20);
+	if (status != cgiFormSuccess)
+	{
+		fprintf(cgiOut, "get d error!\n");
 		return 1;
 	}
 
@@ -57,7 +65,13 @@ fclose(fd);
 	}
 
 
-	sprintf(sql, "delete from information where sno = '%s'", sno);
+	//sprintf(sql, "delete from information where sno = '%s'", sno);
+	if(d[0] == 'n'){
+		sprintf(sql, "update information set state = '0' where sno = '%s'", sno);
+	}
+	else {
+		sprintf(sql, "delete from information where sno = '%s'", sno);
+	}
 	if ((ret = mysql_real_query(db, sql, strlen(sql) + 1)) != 0)
 	{
 		fprintf(cgiOut,"mysql_real_query fail:%s\n", mysql_error(db));
