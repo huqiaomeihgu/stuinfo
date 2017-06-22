@@ -87,7 +87,7 @@ int cgiMain()
 
 
 
-	fprintf(cgiOut, "update student ok!\n");
+	fprintf(cgiOut, "update score ok!\n");
 	mysql_close(db);
 	return 0;
 }
